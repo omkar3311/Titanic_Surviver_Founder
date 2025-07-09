@@ -40,7 +40,7 @@ model2.fit(x_train,y_train)
 model3.fit(x_train,y_train)
 
 
-st.set_page_config(page_title="Titanic Surviver Finder")
+st.set_page_config(page_title="Titanic Surviver Finder",page_icon="cruise.png")
 
 st.sidebar.title("Choose Classifier")
 classifier=st.sidebar.selectbox("",['RandomForestClassifier','KNN','LogisticRegression'])
@@ -112,7 +112,7 @@ if butt:
                 scores = [m.score(x_test, y_test) for m in models]
                 df_scores = pd.DataFrame({'Model': names, 'Accuracy': scores})
                 st.bar_chart(df_scores.set_index('Model'))
-            elif classifier == 'RandomForestClassifier':
+            if classifier == 'RandomForestClassifier':
                     importance = model.feature_importances_
                     st.subheader("📊 Feature Importance")
                     imp_df = pd.DataFrame({'Feature': x.columns, 'Importance': importance}).sort_values(by='Importance', ascending=False)
