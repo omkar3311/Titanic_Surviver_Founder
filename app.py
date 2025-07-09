@@ -122,7 +122,7 @@ if butt:
                 imp_df = pd.DataFrame({'Feature': x.columns, 'Coefficient': coef}).sort_values(by='Coefficient', key=np.abs, ascending=False)
                 st.subheader("📊 Feature Importance")
                 fig, ax = plt.subplots()
-                sns.barplot(x='Coefficient', y='Feature', data=imp_df, palette='coolwarm', ax=ax)
+                sns.barplot(x='Feature', y='Coefficient', data=imp_df, palette='coolwarm', ax=ax)
                 st.pyplot(fig)
             elif classifier=='KNN':
                 proba_df = pd.DataFrame({
