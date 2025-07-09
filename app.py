@@ -119,7 +119,7 @@ if butt:
                     st.bar_chart(imp_df.set_index('Feature'))
             elif classifier == 'LogisticRegression':
                 coef = model.coef_[0]
-                imp_df = pd.DataFrame({'Feature': x.columns, 'Coefficient': coef}).sort_values(by='Coefficient', key=np.abs, ascending=False)
+                imp_df = pd.DataFrame({'Feature': x.columns, 'Coefficient': coef}).sort_values(by='Coefficient', key=np.abs, ascending=True)
                 st.subheader("📊 Feature Importance")
                 fig, ax = plt.subplots()
                 sns.barplot(x='Feature', y='Coefficient', data=imp_df, palette='coolwarm', ax=ax)
