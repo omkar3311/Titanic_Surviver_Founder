@@ -1,0 +1,7 @@
+You Have To Install This Libraries
+
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
