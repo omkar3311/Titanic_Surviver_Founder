@@ -3,7 +3,9 @@
 This is an interactive web app built using **Streamlit** that predicts whether a Titanic passenger would survive or not, based on input features like age, fare, sex, and class. The model uses classic **Machine learning** algorithms such as **Random Forest**, **Logistic Regression**, and **K-Nearest Neighbors (KNN)**.
 
 ---
-Seet At :[Titanic_surviver_founder](https://titanic-surviver-founder.streamlit.app/)
+Website Link : [Titanic_surviver_founder](https://titanic-surviver-founder.streamlit.app/)
+---
+
 ## 🔍 Features
 
 ✅ Predict survival probability of a passenger  
