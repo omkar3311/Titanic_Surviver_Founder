@@ -47,6 +47,30 @@ classifier=st.sidebar.selectbox("",['RandomForestClassifier','KNN','LogisticRegr
 ex=st.sidebar.checkbox("Explain Classifiers")
 compare = st.sidebar.checkbox("Compare All Models")
 raw=st.sidebar.checkbox("Raw Data Of Titanic")
+if st.sidebar.button("Demo True Data"):
+    st.session_state.age = 33
+    st.session_state.pclass = 1
+    st.session_state.sexx = "male"
+    st.session_state.sibsp = 2
+    st.session_state.parch = 1
+    st.session_state.fare = 32.00
+    st.session_state.embarked = "S"
+if st.sidebar.button("Demo False Data"):
+    st.session_state["age"]=25
+    st.session_state["pclass"]=3
+    st.session_state["sexx"]="female"
+    st.session_state["sibsp"]=2
+    st.session_state["parch"]=1
+    st.session_state["fare"]=7.00
+    st.session_state["embarked"]="Q"
+if st.sidebar.button("Restart"):
+    st.session_state["age"]=0
+    st.session_state["pclass"]=1
+    st.session_state["sexx"]="male"
+    st.session_state["sibsp"]=0
+    st.session_state["parch"]=0
+    st.session_state["fare"]=0.00
+    st.session_state["embarkedd"]="S"
 st.header("Titanic Surviver Founder")
 
 if ex:
@@ -61,17 +85,17 @@ if ex:
 with st.expander("**User Data**",expanded=True):  
     col1,col2=st.columns(2)
     with col1:
-        pclass = st.selectbox("Passenger Class (Pclass)", options=[1, 2, 3])
-        sex = st.radio("Sex", options=["male", "female"])
+        pclass = st.selectbox("Passenger Class (Pclass)", options=[1, 2, 3],key="pclass")
+        sex = st.radio("Sex", options=["male", "female"],key="sexx")
         sexx= 0 if sex=='male' else 1
-        fare = st.number_input("Fare ($)", min_value=0.0, max_value=600.0, value=32.0)
-        embarked = st.selectbox("Port of Embarkation", options=["C", "Q", "S"])
+        fare = st.number_input("Fare ($)", min_value=0.0, max_value=600.0,key="fare")
+        embarked = st.selectbox("Port of Embarkation", options=["C", "Q", "S"],key="embarked")
         em={'C':0,'Q':1,'S':2}
         embarkedd=em[embarked]
     with col2:
-        age = st.slider("Age", min_value=0, max_value=100, value=25)
-        sibsp = st.slider("Siblings/Spouses Aboard (SibSp)", min_value=0, max_value=10, value=0)
-        parch = st.slider("Parents/Children Aboard (Parch)", min_value=0, max_value=10, value=0)
+        age = st.slider("Age", min_value=0, max_value=100,key="age")
+        sibsp = st.slider("Siblings/Spouses Aboard (SibSp)", min_value=0, max_value=10, key="sibsp")
+        parch = st.slider("Parents/Children Aboard (Parch)", min_value=0, max_value=10, key="parch")
         butt=st.button("Predict")
 
 # User Inputs List
@@ -139,8 +163,4 @@ if raw:
     with st.expander("See Titanic Raw Data",expanded=True):
         st.dataframe(data.head(50))
 
-col1,col2,cl3=st.columns([1,1,1])
-with col2:
-    if st.button("Restart"):
-        st.session_state.clear()
-        st.rerun()    # Restart 
+    # Restart 
